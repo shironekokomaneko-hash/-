@@ -1,0 +1,338 @@
+/* ==========================================================
+   現代文単語帳サイト 共通スタイル
+   ========================================================== */
+:root{
+  --main-color:#2f5496;
+  --accent-color:#c0504d;
+  --bg-color:#f7f8fa;
+  --card-bg:#ffffff;
+  --border-color:#d9d9d9;
+  --text-color:#222222;
+  --muted-color:#666666;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--bg-color);
+  color:var(--text-color);
+  line-height:1.7;
+}
+
+header.site-header{
+  background:var(--main-color);
+  color:#fff;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+header.site-header h1{
+  font-size:1.2rem;
+  margin:0;
+}
+header.site-header nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:16px;
+  font-size:0.9rem;
+  border-bottom:1px solid transparent;
+}
+header.site-header nav a:hover{
+  border-bottom-color:#fff;
+}
+
+main.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px;
+}
+
+/* ---- 広告枠(プレースホルダー) ----
+   実運用時はここに Google AdSense 等の広告タグを挿入してください。
+   例: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"></script>
+*/
+.ad-slot{
+  background:#eeeeee;
+  border:1px dashed #bbbbbb;
+  color:#999999;
+  text-align:center;
+  padding:14px;
+  font-size:0.8rem;
+  margin:16px 0;
+  border-radius:4px;
+}
+.ad-slot.top{ min-height:60px; }
+.ad-slot.side{ min-height:250px; }
+
+.panel{
+  background:var(--card-bg);
+  border:1px solid var(--border-color);
+  border-radius:8px;
+  padding:20px;
+  margin-bottom:20px;
+}
+.panel h2{
+  margin-top:0;
+  font-size:1.05rem;
+  border-left:5px solid var(--main-color);
+  padding-left:10px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.form-row label{
+  display:block;
+  font-size:0.85rem;
+  font-weight:bold;
+  margin-bottom:6px;
+  color:var(--muted-color);
+}
+.form-row input[type=number],
+.form-row select{
+  width:100%;
+  padding:8px;
+  border:1px solid var(--border-color);
+  border-radius:4px;
+  font-size:0.95rem;
+}
+.radio-group label, .checkbox-group label{
+  font-weight:normal;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-right:14px;
+  color:var(--text-color);
+  font-size:0.9rem;
+}
+.checkbox-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+  max-height:140px;
+  overflow-y:auto;
+  border:1px solid var(--border-color);
+  padding:10px;
+  border-radius:4px;
+}
+
+button, .btn{
+  background:var(--main-color);
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  font-size:0.95rem;
+  border-radius:4px;
+  cursor:pointer;
+}
+button.secondary{
+  background:#777;
+}
+button.danger{
+  background:var(--accent-color);
+}
+button:hover{ opacity:0.9; }
+
+.actions{
+  margin-top:16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* ================= 問題用紙・解答用紙 ================= */
+.sheet{
+  background:#fff;
+  border:1px solid var(--border-color);
+  padding:16mm 14mm;
+  margin:0 auto 24px auto;
+  max-width:210mm;
+  min-height:297mm;
+}
+.sheet-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border-bottom:2px solid var(--main-color);
+  padding-bottom:8px;
+  margin-bottom:14px;
+}
+.sheet-header h2{
+  margin:0;
+  font-size:1.15rem;
+}
+.sheet-meta{
+  font-size:0.85rem;
+  color:var(--muted-color);
+  text-align:right;
+}
+.sheet-fillin{
+  display:flex;
+  gap:24px;
+  font-size:0.85rem;
+  margin-bottom:14px;
+}
+.sheet-fillin span{
+  border-bottom:1px solid #999;
+  display:inline-block;
+  min-width:120px;
+  padding:2px 4px;
+}
+
+.questions-2col{
+  column-count:2;
+  column-gap:10mm;
+}
+.questions-1col{
+  column-count:1;
+}
+
+.q-item{
+  break-inside:avoid;
+  -webkit-column-break-inside:avoid;
+  border:1px solid var(--border-color);
+  border-radius:4px;
+  padding:8px 10px;
+  margin:0 0 8mm 0;
+  font-size:0.85rem;
+}
+.q-item .q-num{
+  font-weight:bold;
+  color:var(--main-color);
+  margin-right:4px;
+}
+.q-item .q-word{
+  font-size:1rem;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+.q-item .q-choices{
+  list-style:none;
+  margin:4px 0 0 0;
+  padding:0;
+}
+.q-item .q-choices li{
+  margin-bottom:2px;
+}
+.q-item .q-blank{
+  border-bottom:1px solid #999;
+  display:inline-block;
+  min-width:140px;
+  height:1.2em;
+}
+
+.answer-list{
+  columns:3;
+  column-gap:8mm;
+  font-size:0.85rem;
+}
+.answer-list div{
+  break-inside:avoid;
+  margin-bottom:4px;
+}
+
+.page-break{
+  page-break-before:always;
+  break-before:page;
+}
+
+footer.site-footer{
+  text-align:center;
+  color:var(--muted-color);
+  font-size:0.8rem;
+  padding:24px 0;
+}
+
+/* ================= 印刷設定 ================= */
+@media print{
+  @page{
+    size:A4 portrait;
+    margin:12mm;
+  }
+  body{ background:#fff; }
+  header.site-header, .no-print, .ad-slot{
+    display:none !important;
+  }
+  main.container{
+    max-width:none;
+    padding:0;
+  }
+  .sheet{
+    border:none;
+    box-shadow:none;
+    padding:0;
+    margin:0;
+    min-height:0;
+    max-width:none;
+  }
+  .q-item{
+    border-color:#ccc;
+  }
+}
+
+/* ---- レスポンシブ(画面表示) ---- */
+@media (max-width:700px){
+  .questions-2col{ column-count:1; }
+  .answer-list{ columns:2; }
+}
+
+/* ---- 管理画面用テーブル ---- */
+table.word-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.85rem;
+}
+table.word-table th, table.word-table td{
+  border:1px solid var(--border-color);
+  padding:6px 8px;
+  text-align:left;
+  vertical-align:top;
+}
+table.word-table th{
+  background:#eef1f7;
+  position:sticky;
+  top:0;
+}
+table.word-table input, table.word-table select, table.word-table textarea{
+  width:100%;
+  border:1px solid var(--border-color);
+  border-radius:3px;
+  padding:4px;
+  font-size:0.85rem;
+  font-family:inherit;
+}
+table.word-table textarea{
+  resize:vertical;
+  min-height:2.4em;
+}
+.table-wrap{
+  max-height:520px;
+  overflow:auto;
+  border:1px solid var(--border-color);
+  border-radius:6px;
+}
+.badge{
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:10px;
+  font-size:0.75rem;
+  color:#fff;
+}
+.badge.A{ background:#c0504d; }
+.badge.B{ background:#4f81bd; }
+.badge.C{ background:#9bbb59; }
+
+.status-msg{
+  font-size:0.85rem;
+  padding:8px 10px;
+  border-radius:4px;
+  margin-top:10px;
+}
+.status-msg.ok{ background:#eaf5ea; color:#2e7d32; }
+.status-msg.err{ background:#fdecea; color:#c62828; }

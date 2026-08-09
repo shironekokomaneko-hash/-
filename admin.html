@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>単語管理 ｜ 現代文重要語句 問題演習サイト</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>現代文重要語句 問題演習</h1>
+  <nav>
+    <a href="index.html">問題を作る</a>
+    <a href="admin.html">単語を管理</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="panel">
+    <h2>使い方</h2>
+    <p style="font-size:0.9rem;color:var(--muted-color);">
+      このページは、単語データ(data.json)をブラウザ上で編集するための管理画面です。<br>
+      このサイトはサーバーを持たない静的サイトのため、編集内容は自動保存されません。<br>
+      編集が終わったら必ず「data.jsonを書き出す」ボタンでファイルをダウンロードし、
+      サーバー上の <code>data.json</code> を書き出したファイルで置き換えてください。
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>データの読み込み</h2>
+    <div class="actions">
+      <button id="loadCurrentBtn">現在のdata.jsonを読み込む</button>
+      <label class="btn secondary" style="display:inline-block;">
+        JSONファイルを選んで読み込む
+        <input type="file" id="fileInput" accept="application/json" style="display:none;">
+      </label>
+    </div>
+    <div id="loadStatus" class="status-msg" style="display:none;"></div>
+  </section>
+
+  <section class="panel">
+    <h2>新しい単語を追加</h2>
+    <div class="form-grid">
+      <div class="form-row">
+        <label for="newCategory">カテゴリ</label>
+        <input type="text" id="newCategory" list="categoryList" placeholder="例: 対比・二項対立">
+        <datalist id="categoryList"></datalist>
+      </div>
+      <div class="form-row">
+        <label for="newWord">語句</label>
+        <input type="text" id="newWord">
+      </div>
+      <div class="form-row">
+        <label for="newReading">読み</label>
+        <input type="text" id="newReading">
+      </div>
+      <div class="form-row">
+        <label for="newFreq">頻出度</label>
+        <select id="newFreq">
+          <option value="A">A(最頻出)</option>
+          <option value="B" selected>B(頻出)</option>
+          <option value="C">C(発展)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-grid" style="margin-top:12px;">
+      <div class="form-row" style="grid-column:1/-1;">
+        <label for="newMeaning">意味</label>
+        <input type="text" id="newMeaning">
+      </div>
+      <div class="form-row" style="grid-column:1/-1;">
+        <label for="newExample">例文(オリジナルのものを入力してください)</label>
+        <input type="text" id="newExample">
+      </div>
+    </div>
+    <div class="actions">
+      <button id="addWordBtn">この単語を追加する</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>登録済み単語一覧(<span id="countLabel">0</span>件)</h2>
+    <div class="form-row" style="max-width:300px;margin-bottom:10px;">
+      <label for="searchBox">語句・意味で検索</label>
+      <input type="text" id="searchBox" placeholder="検索キーワード">
+    </div>
+    <div class="table-wrap">
+      <table class="word-table" id="wordTable">
+        <thead>
+          <tr>
+            <th style="width:4%;">ID</th>
+            <th style="width:12%;">カテゴリ</th>
+            <th style="width:8%;">語句</th>
+            <th style="width:8%;">読み</th>
+            <th style="width:6%;">頻出度</th>
+            <th style="width:24%;">意味</th>
+            <th style="width:28%;">例文</th>
+            <th style="width:6%;">操作</th>
+          </tr>
+        </thead>
+        <tbody id="wordTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>書き出し</h2>
+    <p style="font-size:0.85rem;color:var(--muted-color);">
+      編集内容を反映した data.json をダウンロードします。ダウンロード後、サーバー上のファイルを置き換えてください。
+    </p>
+    <div class="actions">
+      <button id="exportBtn">data.jsonを書き出す</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  &copy; 2026 現代文重要語句 問題演習サイト
+</footer>
+
+<script src="admin.js"></script>
+</body>
+</html>

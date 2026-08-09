@@ -1,0 +1,4 @@
+# このファイルはサイトのルート(https://あなたのドメイン/ads.txt)に配置してください。
+# pub-XXXXXXXXXXXXXXXX の部分を、ご自身のAdSense発行者IDに置き換えてください。
+# (AdSenseダッシュボード > アカウント > アカウント情報 に記載されています)
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
